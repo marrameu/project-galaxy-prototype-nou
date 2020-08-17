@@ -1,0 +1,107 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+length = 4.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("CameraBase")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 1 ],
+"method": "change_state"
+}, {
+"args": [ 0 ],
+"method": "change_state"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("CameraBase/Camera")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "clear_current"
+}, {
+"args": [  ],
+"method": "make_current"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("CinematicCamera")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "make_current"
+}, {
+"args": [ true ],
+"method": "clear_current"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CinematicCamera:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -33.1656, 8.00268, 20.8957 ), Vector3( -9.60221, 7.46164, 1.34245 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CinematicCamera:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -9.22851, -69.5585, 0 ), Vector3( -9.22851, -79.7865, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("GlobalAnimPlayer/Fade/Texture/AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "fade", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("Enemy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "respawn"
+} ]
+}

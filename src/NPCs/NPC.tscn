@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/NPCs/Actions/GiveQuestAction.gd" type="Script" id=1]
+[ext_resource path="res://src/NPCs/NPC.gd" type="Script" id=2]
+[ext_resource path="res://src/NPCs/Actions/PlayDialogueAction.gd" type="Script" id=3]
+[ext_resource path="res://src/NPCs/Actions/CompleteQuestAction.gd" type="Script" id=4]
+[ext_resource path="res://src/QuestSystem/Quests/TestQuest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Interface/Dialogue3D/QuestBubble.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/NPCs/NPCMesh.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.6
+height = 2.4
+
+[sub_resource type="CylinderShape" id=2]
+radius = 3.0
+height = 1.0
+
+[node name="NPC" type="StaticBody"]
+script = ExtResource( 2 )
+
+[node name="PlayerMesh" parent="." instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.8, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="QuestBubble" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Actions" type="Node" parent="."]
+
+[node name="PlayDialogueAction" type="Node" parent="Actions"]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+dialogues_files_paths = [ "res://assets/dialogue/test.json", "res://assets/dialogue/test1.json", "res://assets/dialogue/test2.json" ]
+
+[node name="QuestActions1" type="Node" parent="Actions" groups=[
+"quest_actions",
+]]
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="GiveQuestAction" type="Node" parent="Actions/QuestActions1"]
+script = ExtResource( 1 )
+quest_reference = ExtResource( 5 )
+
+[node name="CompleteQuestAction" type="Node" parent="Actions/QuestActions1"]
+script = ExtResource( 4 )
+quest_reference = ExtResource( 5 )
+[connection signal="finished" from="Actions/QuestActions1/CompleteQuestAction" to="." method="_on_Action_finished"]

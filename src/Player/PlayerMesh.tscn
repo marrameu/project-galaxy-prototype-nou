@@ -1,0 +1,364 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/models/ybot.dae" type="PackedScene" id=1]
+[ext_resource path="res://assets/animations/dying.tres" type="Animation" id=2]
+[ext_resource path="res://assets/animations/falling.tres" type="Animation" id=3]
+[ext_resource path="res://assets/animations/idle.tres" type="Animation" id=4]
+[ext_resource path="res://assets/animations/jump_up.tres" type="Animation" id=5]
+[ext_resource path="res://assets/animations/running.tres" type="Animation" id=6]
+[ext_resource path="res://assets/animations/sword_slash.tres" type="Animation" id=7]
+[ext_resource path="res://assets/animations/walking.tres" type="Animation" id=8]
+[ext_resource path="res://src/Player/PlayerAnimTree.gd" type="Script" id=9]
+[ext_resource path="res://src/Player/PlayerMesh.gd" type="Script" id=10]
+[ext_resource path="res://assets/audio/footsteps/footstep01.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/animations/talking.tres" type="Animation" id=12]
+
+[sub_resource type="Skin" id=1]
+bind_count = 67
+bind/0/bone = 0
+bind/0/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.996721, -0.00247052 )
+bind/1/bone = 1
+bind/1/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1e-08, -1.09596, 0.00980283 )
+bind/2/bone = 2
+bind/2/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38e-06, -1.21241, 0.0240262 )
+bind/3/bone = 3
+bind/3/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7e-07, -1.34601, 0.0402908 )
+bind/4/bone = 4
+bind/4/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2e-07, -1.49634, 0.0323618 )
+bind/5/bone = 5
+bind/5/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9e-07, -1.59955, 0.000937499 )
+bind/6/bone = 6
+bind/6/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, -8.73115e-10 )
+bind/7/bone = 7
+bind/7/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, -8.73115e-10 )
+bind/8/bone = 8
+bind/8/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, -8.73115e-10 )
+bind/9/bone = 9
+bind/9/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0610578, -1.43712, 0.0332353 )
+bind/10/bone = 10
+bind/10/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187608, -1.43446, 0.0592446 )
+bind/11/bone = 11
+bind/11/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461655, -1.43446, 0.0592445 )
+bind/12/bone = 12
+bind/12/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7378, -1.43446, 0.0592443 )
+bind/13/bone = 13
+bind/13/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865555, -1.43446, 0.0592441 )
+bind/14/bone = 14
+bind/14/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.901694, -1.43446, 0.0592441 )
+bind/15/bone = 15
+bind/15/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.936292, -1.43446, 0.0592443 )
+bind/16/bone = 16
+bind/16/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/17/bone = 17
+bind/17/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.775688, -1.41279, 0.0292134 )
+bind/18/bone = 18
+bind/18/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.812442, -1.39157, 0.00799328 )
+bind/19/bone = 19
+bind/19/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846386, -1.37197, -0.0116046 )
+bind/20/bone = 20
+bind/20/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 1.86265e-09 )
+bind/21/bone = 21
+bind/21/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860466, -1.43214, 0.0310237 )
+bind/22/bone = 22
+bind/22/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.899385, -1.43214, 0.0310233 )
+bind/23/bone = 23
+bind/23/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.933537, -1.43214, 0.0310234 )
+bind/24/bone = 24
+bind/24/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/25/bone = 25
+bind/25/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85927, -1.43456, 0.0814106 )
+bind/26/bone = 26
+bind/26/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.895281, -1.43456, 0.0814102 )
+bind/27/bone = 27
+bind/27/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.928355, -1.43456, 0.0814104 )
+bind/28/bone = 28
+bind/28/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/29/bone = 29
+bind/29/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846882, -1.43219, 0.106502 )
+bind/30/bone = 30
+bind/30/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.888248, -1.43219, 0.106502 )
+bind/31/bone = 31
+bind/31/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.914196, -1.43219, 0.106503 )
+bind/32/bone = 32
+bind/32/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/33/bone = 33
+bind/33/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0610574, -1.43712, 0.0332352 )
+bind/34/bone = 34
+bind/34/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187608, -1.43446, 0.0592442 )
+bind/35/bone = 35
+bind/35/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.461655, -1.43446, 0.0592441 )
+bind/36/bone = 36
+bind/36/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737799, -1.43446, 0.0592439 )
+bind/37/bone = 37
+bind/37/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865555, -1.43446, 0.0592437 )
+bind/38/bone = 38
+bind/38/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.901694, -1.43446, 0.0592437 )
+bind/39/bone = 39
+bind/39/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936292, -1.43446, 0.059244 )
+bind/40/bone = 40
+bind/40/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/41/bone = 41
+bind/41/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.775687, -1.41279, 0.029213 )
+bind/42/bone = 42
+bind/42/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.812442, -1.39157, 0.00799293 )
+bind/43/bone = 43
+bind/43/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.846385, -1.37197, -0.011605 )
+bind/44/bone = 44
+bind/44/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.86265e-09 )
+bind/45/bone = 45
+bind/45/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.860465, -1.43214, 0.0310234 )
+bind/46/bone = 46
+bind/46/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.899385, -1.43214, 0.031023 )
+bind/47/bone = 47
+bind/47/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933537, -1.43214, 0.0310231 )
+bind/48/bone = 48
+bind/48/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/49/bone = 49
+bind/49/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.859269, -1.43456, 0.0814102 )
+bind/50/bone = 50
+bind/50/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.895281, -1.43456, 0.0814099 )
+bind/51/bone = 51
+bind/51/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.928354, -1.43456, 0.0814101 )
+bind/52/bone = 52
+bind/52/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/53/bone = 53
+bind/53/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.846881, -1.43219, 0.106502 )
+bind/54/bone = 54
+bind/54/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.888248, -1.43219, 0.106502 )
+bind/55/bone = 55
+bind/55/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.914196, -1.43219, 0.106502 )
+bind/56/bone = 56
+bind/56/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/57/bone = 57
+bind/57/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0912445, -0.930157, -0.00191674 )
+bind/58/bone = 58
+bind/58/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0936913, -0.524202, 0.00322854 )
+bind/59/bone = 59
+bind/59/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0912446, -0.103724, 0.0238308 )
+bind/60/bone = 60
+bind/60/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0949782, 0.00119829, -0.102576 )
+bind/61/bone = 61
+bind/61/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.82772e-08, -7.45058e-09 )
+bind/62/bone = 62
+bind/62/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0912445, -0.930157, -0.00191674 )
+bind/63/bone = 63
+bind/63/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0936913, -0.524203, 0.00325367 )
+bind/64/bone = 64
+bind/64/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0912446, -0.103723, 0.0238301 )
+bind/65/bone = 65
+bind/65/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0949782, 0.00119926, -0.102577 )
+bind/66/bone = 66
+bind/66/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49246e-10, 0 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+params_cull_mode = 1
+params_grow = true
+params_grow_amount = 0.003
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+next_pass = SubResource( 2 )
+params_cull_mode = 2
+albedo_color = Color( 0.077256, 0.337296, 0.4176, 1 )
+metallic_specular = 1.0
+
+[sub_resource type="Skin" id=4]
+bind_count = 67
+bind/0/bone = 0
+bind/0/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.996721, -0.00247052 )
+bind/1/bone = 1
+bind/1/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1e-08, -1.09596, 0.00980283 )
+bind/2/bone = 2
+bind/2/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38e-06, -1.21241, 0.0240262 )
+bind/3/bone = 3
+bind/3/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7e-07, -1.34601, 0.0402908 )
+bind/4/bone = 4
+bind/4/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2e-07, -1.49634, 0.0323618 )
+bind/5/bone = 5
+bind/5/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9e-07, -1.59955, 0.000937499 )
+bind/6/bone = 6
+bind/6/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, -8.73115e-10 )
+bind/7/bone = 7
+bind/7/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, -8.73115e-10 )
+bind/8/bone = 8
+bind/8/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, -8.73115e-10 )
+bind/9/bone = 9
+bind/9/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0610578, -1.43712, 0.0332353 )
+bind/10/bone = 10
+bind/10/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187608, -1.43446, 0.0592446 )
+bind/11/bone = 11
+bind/11/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461655, -1.43446, 0.0592445 )
+bind/12/bone = 12
+bind/12/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7378, -1.43446, 0.0592443 )
+bind/13/bone = 13
+bind/13/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865555, -1.43446, 0.0592441 )
+bind/14/bone = 14
+bind/14/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.901694, -1.43446, 0.0592441 )
+bind/15/bone = 15
+bind/15/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.936292, -1.43446, 0.0592443 )
+bind/16/bone = 16
+bind/16/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/17/bone = 17
+bind/17/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.775688, -1.41279, 0.0292134 )
+bind/18/bone = 18
+bind/18/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.812442, -1.39157, 0.00799328 )
+bind/19/bone = 19
+bind/19/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846386, -1.37197, -0.0116046 )
+bind/20/bone = 20
+bind/20/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 1.86265e-09 )
+bind/21/bone = 21
+bind/21/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860466, -1.43214, 0.0310237 )
+bind/22/bone = 22
+bind/22/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.899385, -1.43214, 0.0310233 )
+bind/23/bone = 23
+bind/23/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.933537, -1.43214, 0.0310234 )
+bind/24/bone = 24
+bind/24/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/25/bone = 25
+bind/25/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85927, -1.43456, 0.0814106 )
+bind/26/bone = 26
+bind/26/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.895281, -1.43456, 0.0814102 )
+bind/27/bone = 27
+bind/27/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.928355, -1.43456, 0.0814104 )
+bind/28/bone = 28
+bind/28/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/29/bone = 29
+bind/29/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846882, -1.43219, 0.106502 )
+bind/30/bone = 30
+bind/30/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.888248, -1.43219, 0.106502 )
+bind/31/bone = 31
+bind/31/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.914196, -1.43219, 0.106503 )
+bind/32/bone = 32
+bind/32/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0 )
+bind/33/bone = 33
+bind/33/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0610574, -1.43712, 0.0332352 )
+bind/34/bone = 34
+bind/34/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187608, -1.43446, 0.0592442 )
+bind/35/bone = 35
+bind/35/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.461655, -1.43446, 0.0592441 )
+bind/36/bone = 36
+bind/36/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737799, -1.43446, 0.0592439 )
+bind/37/bone = 37
+bind/37/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865555, -1.43446, 0.0592437 )
+bind/38/bone = 38
+bind/38/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.901694, -1.43446, 0.0592437 )
+bind/39/bone = 39
+bind/39/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936292, -1.43446, 0.059244 )
+bind/40/bone = 40
+bind/40/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/41/bone = 41
+bind/41/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.775687, -1.41279, 0.029213 )
+bind/42/bone = 42
+bind/42/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.812442, -1.39157, 0.00799293 )
+bind/43/bone = 43
+bind/43/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.846385, -1.37197, -0.011605 )
+bind/44/bone = 44
+bind/44/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.86265e-09 )
+bind/45/bone = 45
+bind/45/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.860465, -1.43214, 0.0310234 )
+bind/46/bone = 46
+bind/46/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.899385, -1.43214, 0.031023 )
+bind/47/bone = 47
+bind/47/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.933537, -1.43214, 0.0310231 )
+bind/48/bone = 48
+bind/48/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/49/bone = 49
+bind/49/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.859269, -1.43456, 0.0814102 )
+bind/50/bone = 50
+bind/50/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.895281, -1.43456, 0.0814099 )
+bind/51/bone = 51
+bind/51/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.928354, -1.43456, 0.0814101 )
+bind/52/bone = 52
+bind/52/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/53/bone = 53
+bind/53/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.846881, -1.43219, 0.106502 )
+bind/54/bone = 54
+bind/54/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.888248, -1.43219, 0.106502 )
+bind/55/bone = 55
+bind/55/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.914196, -1.43219, 0.106502 )
+bind/56/bone = 56
+bind/56/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+bind/57/bone = 57
+bind/57/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0912445, -0.930157, -0.00191674 )
+bind/58/bone = 58
+bind/58/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0936913, -0.524202, 0.00322854 )
+bind/59/bone = 59
+bind/59/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0912446, -0.103724, 0.0238308 )
+bind/60/bone = 60
+bind/60/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0949782, 0.00119829, -0.102576 )
+bind/61/bone = 61
+bind/61/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.82772e-08, -7.45058e-09 )
+bind/62/bone = 62
+bind/62/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0912445, -0.930157, -0.00191674 )
+bind/63/bone = 63
+bind/63/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0936913, -0.524203, 0.00325367 )
+bind/64/bone = 64
+bind/64/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0912446, -0.103723, 0.0238301 )
+bind/65/bone = 65
+bind/65/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0949782, 0.00119926, -0.102577 )
+bind/66/bone = 66
+bind/66/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49246e-10, 0 )
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_unshaded = true
+params_cull_mode = 1
+params_grow = true
+params_grow_amount = 0.003
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+next_pass = SubResource( 5 )
+params_cull_mode = 2
+albedo_color = Color( 0.122841, 0.170315, 0.177774, 1 )
+metallic_specular = 1.0
+
+[sub_resource type="AnimationNodeBlendTree" id=7]
+graph_offset = Vector2( 0, -195 )
+nodes/output/position = Vector2( 480, 0 )
+
+[node name="PlayerMesh" index="0" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+script = ExtResource( 10 )
+
+[node name="Skeleton" parent="." index="0"]
+bones/2/bound_children = [ NodePath("BackAttachment") ]
+bones/36/bound_children = [ NodePath("HandAttachment") ]
+
+[node name="Alpha_Surface" parent="Skeleton" index="0"]
+skin = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="Alpha_Joints" parent="Skeleton" index="1"]
+skin = SubResource( 4 )
+material/0 = SubResource( 6 )
+
+[node name="HandAttachment" type="BoneAttachment" parent="Skeleton" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737799, 1.43446, -0.0592439 )
+bone_name = "mixamorig_RightHand"
+
+[node name="BackAttachment" type="BoneAttachment" parent="Skeleton" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38e-06, 1.21241, -0.0240262 )
+bone_name = "mixamorig_Spine1"
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+anims/dying = ExtResource( 2 )
+anims/falling = ExtResource( 3 )
+anims/idle = ExtResource( 4 )
+anims/jump_up = ExtResource( 5 )
+anims/running = ExtResource( 6 )
+anims/sword_slash = ExtResource( 7 )
+anims/talking = ExtResource( 12 )
+anims/walking = ExtResource( 8 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+process_mode = 0
+script = ExtResource( 9 )
+
+[node name="StepAudio" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 11 )
+volume_db = -10.0
+bus = "Sounds"

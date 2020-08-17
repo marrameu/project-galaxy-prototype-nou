@@ -1,0 +1,9 @@
+{
+	"001" : {"type" : 1, "name" : "Roc", "text" : "Bon dia, matinada, ablada, matí, migdia,\ntarda, vesprada, vespre i nit."},
+	"002" : {"type" : 1, "name" : "Roc", "text" : "Això és un enemic."},
+	"003" : {"type" : 3, "anim" : "npc1"},
+	"004" : {"type" : 4, "time" : 4.75},
+	"005" : {"type" : 1, "name" : "Roc", "text" : "Doncs ara ja ho saps."},
+	"006" : {"type" : 1, "name" : "Roc", "text" : "Aleshores, intenta derrotar-lo."},
+	"007" : {"type" : 6, "args" : ["npc1", "give_quest", "1"]}
+}

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kotor_taris_upper_city.ogg-0a43b49884d551eb6e6a760e18c28c3d.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/kotor_taris_upper_city.ogg"
+dest_files=[ "res://.import/kotor_taris_upper_city.ogg-0a43b49884d551eb6e6a760e18c28c3d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

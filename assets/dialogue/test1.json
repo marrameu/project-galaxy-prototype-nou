@@ -1,0 +1,5 @@
+{
+	"001" : {"type" : 1, "name" : "Roc", "text" : "Enhorabona calb."},
+	"002" : {"type" : 1, "name" : "Roc", "text" : "Té, ací tens unes recompenses."},
+	"003" : {"type" : 6, "args" : ["npc1", "complete_quest", "1"]}
+}

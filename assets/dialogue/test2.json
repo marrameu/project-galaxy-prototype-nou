@@ -1,0 +1,4 @@
+{
+	"001" : {"type" : 1, "name" : "Roc", "text" : "Enhorabona calb."},
+	"002" : {"type" : 6, "args" : ["npc1"]}
+}

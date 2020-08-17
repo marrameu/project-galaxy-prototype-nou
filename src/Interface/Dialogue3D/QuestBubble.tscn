@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/interface/emotes/emote_exclamation.png" type="Texture" id=1]
+[ext_resource path="res://src/Interface/Dialogue3D/QuestBubble.gd" type="Script" id=2]
+[ext_resource path="res://assets/interface/emotes/emote_question.png" type="Texture" id=3]
+[ext_resource path="res://assets/interface/emotes/emote_exclamations.png" type="Texture" id=4]
+[ext_resource path="res://assets/materials/quest_bubble.tres" type="Material" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "wobble"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite3D:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.31864, 1.68 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.2, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "quest_available",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "quest_active",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "quest_complete",
+"speed": 0.0
+} ]
+
+[node name="QuestBubble" type="Position3D"]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "wobble"
+anims/wobble = SubResource( 1 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+material_override = ExtResource( 5 )
+opacity = 0.0
+pixel_size = 0.075
+frames = SubResource( 3 )
+animation = "quest_available"
+__meta__ = {
+"_editor_description_": ""
+}

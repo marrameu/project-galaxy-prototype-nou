@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/raving_energy_by_kevin_macleod.ogg-714e5034e96df772c02d0892d0ce9d80.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/raving_energy_by_kevin_macleod.ogg"
+dest_files=[ "res://.import/raving_energy_by_kevin_macleod.ogg-714e5034e96df772c02d0892d0ce9d80.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

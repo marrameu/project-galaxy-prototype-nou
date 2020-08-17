@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/dialogue_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/DialogueSystem/ChoiceSystem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/DialogueSystem/DialogueSystem.gd" type="Script" id=3]
+[ext_resource path="res://src/DialogueSystem/DialoguePlayer.gd" type="Script" id=4]
+[ext_resource path="res://assets/theme/dialogue_panel.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/theme/title_panel.tres" type="StyleBox" id=6]
+
+[node name="DialogueSystem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChoiceSystem" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="DialogueBox" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -287.5
+margin_top = -178.0
+margin_right = 287.5
+margin_bottom = -50.0
+mouse_filter = 2
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "S'ha d'afegir un indicador per premer el botó de continuar."
+}
+
+[node name="Panel" type="Panel" parent="DialogueBox"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -287.5
+margin_top = -101.0
+margin_right = 287.5
+custom_styles/panel = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="DialogueBox/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.5
+margin_top = -32.5
+margin_right = 258.5
+margin_bottom = 33.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Diàleg per defecte, si estàs veïent això
+és que alguna cosa va malamanet."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitlePanel" type="Panel" parent="DialogueBox"]
+margin_right = 140.0
+margin_bottom = 38.0
+custom_styles/panel = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="DialogueBox/TitlePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Aleix"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialoguePlayer" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="DialoguePlayer"]
+wait_time = 4.75
+one_shot = true
+[connection signal="finished" from="DialoguePlayer" to="." method="_on_DialoguePlayer_finished"]
+[connection signal="finished_waiting" from="DialoguePlayer" to="." method="_on_DialoguePlayer_finished_waiting"]
+[connection signal="started_waiting" from="DialoguePlayer" to="." method="_on_DialoguePlayer_started_waiting"]
+[connection signal="timeout" from="DialoguePlayer/Timer" to="DialoguePlayer" method="_on_Timer_timeout"]
