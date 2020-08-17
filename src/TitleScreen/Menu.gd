@@ -8,3 +8,7 @@ func _ready() -> void:
 func _on_PlayButton_pressed() -> void:
 	A.play_click()
 	get_tree().change_scene("res://src/Levels/Level.tscn")
+
+
+func _on_ExitButton_pressed():
+	get_tree().quit()

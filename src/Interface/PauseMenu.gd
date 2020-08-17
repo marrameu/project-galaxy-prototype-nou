@@ -25,7 +25,7 @@ func _on_ButtonOptions_pressed():
 
 
 func _on_ButtonExit_pressed():
-	pass # Replace with function body.
+	get_tree().quit()
 
 
 func pause_or_resume_game():

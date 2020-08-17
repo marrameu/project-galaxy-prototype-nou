@@ -35,9 +35,9 @@ environment = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 50.0
-margin_top = 50.0
+margin_top = 48.9406
 margin_right = -50.0
-margin_bottom = -50.0
+margin_bottom = -51.0594
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -56,15 +56,16 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -94.0
-margin_right = 120.0
+margin_top = -266.0
+margin_right = 335.0
+custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameButton" type="Button" parent="Menu/VBoxContainer"]
-margin_right = 120.0
-margin_bottom = 45.0
+margin_right = 335.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Nova partida"
@@ -73,12 +74,23 @@ __meta__ = {
 }
 
 [node name="ContinueButton" type="Button" parent="Menu/VBoxContainer"]
-margin_top = 49.0
-margin_right = 120.0
-margin_bottom = 94.0
+margin_top = 98.0
+margin_right = 335.0
+margin_bottom = 166.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Continuar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="Menu/VBoxContainer"]
+margin_top = 196.0
+margin_right = 335.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Eixir"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,3 +117,4 @@ autoplay = true
 bus = "Music"
 [connection signal="pressed" from="Menu/VBoxContainer/NewGameButton" to="Menu" method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/ContinueButton" to="Menu" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/ExitButton" to="Menu" method="_on_ExitButton_pressed"]
