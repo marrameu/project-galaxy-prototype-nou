@@ -96,6 +96,95 @@ margin_right = 452.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer"]
+margin_right = 452.0
+margin_bottom = 244.0
+
+[node name="ButtonVideo" type="Button" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video"]
+margin_right = 452.0
+margin_bottom = 20.0
+text = "Vídeo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desplegable" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video"]
+margin_top = 24.0
+margin_right = 452.0
+margin_bottom = 244.0
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable"]
+margin_right = 452.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonVSync" type="CheckButton" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable"]
+margin_top = 20.0
+margin_right = 452.0
+margin_bottom = 60.0
+pressed = true
+text = "V-sync"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonFullScreen" type="CheckButton" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable"]
+margin_top = 64.0
+margin_right = 452.0
+margin_bottom = 104.0
+text = "FullScreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonBorderless" type="CheckButton" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable"]
+margin_top = 108.0
+margin_right = 452.0
+margin_bottom = 148.0
+text = "Borderless"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable"]
+margin_top = 152.0
+margin_right = 452.0
+margin_bottom = 172.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable"]
+margin_top = 176.0
+margin_right = 452.0
+margin_bottom = 196.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable"]
+margin_top = 200.0
+margin_right = 452.0
+margin_bottom = 220.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="HBoxContainer/Control/VBoxContainer/ButtonContinue" to="." method="_on_ButtonContinue_pressed"]
 [connection signal="pressed" from="HBoxContainer/Control/VBoxContainer/ButtonOptions" to="." method="_on_ButtonOptions_pressed"]
 [connection signal="pressed" from="HBoxContainer/Control/VBoxContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/ButtonVideo" to="." method="_on_ButtonVideo_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable/CheckButtonVSync" to="." method="_on_CheckButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable/CheckButtonFullScreen" to="." method="_on_CheckButton2_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable/CheckButtonBorderless" to="." method="_on_CheckButtonBorderless_pressed"]

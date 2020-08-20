@@ -32,3 +32,30 @@ func pause_or_resume_game():
 	var new_pause_state = not get_tree().paused
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
+
+
+func _on_ButtonVideo_pressed():
+	$HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable.visible = !$HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable.visible
+
+
+func _on_CheckButton_pressed():
+	
+	if $HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable/CheckButtonVSync.pressed:
+		OS.set_use_vsync(true)
+	else:
+		OS.set_use_vsync(false)
+	
+
+
+func _on_CheckButton2_pressed():
+	if $HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable/CheckButtonFullScreen.pressed:
+		OS.window_fullscreen = !OS.window_fullscreen
+	else:
+		OS.window_fullscreen = !OS.window_fullscreen
+
+
+func _on_CheckButtonBorderless_pressed():
+	if $HBoxContainer/VBoxContainer/Control/VBoxContainer/Video/Desplegable/CheckButtonBorderless.pressed:
+		OS.set_borderless_window(true)
+	else:
+		OS.set_borderless_window(false)
