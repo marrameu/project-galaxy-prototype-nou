@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/InfoUI.gd" type="Script" id=1]
 [ext_resource path="res://src/Interface/Fade.tscn" type="PackedScene" id=2]
@@ -17,7 +17,10 @@
 [ext_resource path="res://src/DialogueSystem/DialogueGUI.gd" type="Script" id=15]
 [ext_resource path="res://src/Enemies/Enemy.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/Levels/GlobalAnimPlayer.gd" type="Script" id=17]
+[ext_resource path="res://data/data.hterrain" type="Resource" id=18]
 [ext_resource path="res://src/Interface/PauseMenu.tscn" type="PackedScene" id=19]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=20]
+[ext_resource path="res://assets/textures/grid.jpg" type="Texture" id=21]
 
 [sub_resource type="PlaneMesh" id=1]
 material = ExtResource( 5 )
@@ -90,7 +93,32 @@ script = ExtResource( 6 )
 
 [node name="Structure" type="Spatial" parent="."]
 
+[node name="HTerrain" type="Spatial" parent="Structure"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -50 )
+script = ExtResource( 20 )
+collision_enabled = true
+ambient_wind = 0.0
+lod_scale = 2.0
+custom_globalmap_shader = null
+map_scale = Vector3( 1, 1, 1 )
+_terrain_data = ExtResource( 18 )
+chunk_size = 32
+shader_type = "Classic4Lite"
+custom_shader = null
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+ground/albedo_bump_0 = ExtResource( 21 )
+ground/normal_roughness_0 = null
+ground/albedo_bump_1 = null
+ground/normal_roughness_1 = null
+ground/albedo_bump_2 = null
+ground/normal_roughness_2 = null
+ground/albedo_bump_3 = null
+ground/normal_roughness_3 = null
+
 [node name="Floor" type="MeshInstance" parent="Structure"]
+visible = false
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -164,7 +192,6 @@ target = NodePath("../../Level/Player")
 
 [node name="Camera" type="Camera" parent="CameraBase"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.8, 7 )
-current = true
 far = 200.0
 script = ExtResource( 8 )
 

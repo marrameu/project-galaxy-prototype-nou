@@ -3,9 +3,15 @@ class_name Player
 
 export var cam: NodePath
 
+export(float, 0.1, 1) var mouse_sensitivity : float = 0.3
+export(float, -90, 0) var min_pitch : float = -90
+export(float, 0, 90) var max_pitch : float = 90
+
 onready var sword: = $PlayerMesh/Skeleton/BackAttachment/Sword
 onready var back_attachment: = $PlayerMesh/Skeleton/BackAttachment
 onready var hand_attachment: = $PlayerMesh/Skeleton/HandAttachment
+onready var camera_pivot = $CameraPivot
+onready var camera = $CameraPivot/CameraBoom/Camera
 
 onready var jump_timer: = $JumpTimer
 onready var dodge_timer: = $DodgeTimer
@@ -45,7 +51,7 @@ func _ready() -> void:
 	jump_timer.connect("timeout", self, "_on_JumpTimer_timeout")
 	dodge_timer.connect("timeout", self, "_on_DodgeTimer_timeout")
 	animation_player.connect("animation_finished", self, "_on_animation_finished")
-
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func change_state(new_state : int) -> void:
 	if current_state == States.ATTACKING:
@@ -85,7 +91,15 @@ func _process(delta : float) -> void:
 		States.ATTACKING:
 			if Input.is_action_just_pressed("attack") and current_combo < MAX_COMBO:
 				combo = true
+	
+	if Input.is_action_just_pressed("mouse_visible"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotation_degrees.y -= event.relative.x * mouse_sensitivity
+		camera_pivot.rotation_degrees.x -= event.relative.y * mouse_sensitivity
+		camera_pivot.rotation_degrees.x = clamp(camera_pivot.rotation_degrees.x, min_pitch, max_pitch)
 
 func _physics_process(delta):
 	if current_state != States.CINEMATIC:
@@ -219,3 +233,5 @@ func _on_animation_finished(anim_name):
 		else:
 			current_combo = 0
 			change_state(States.ATTACK)
+			
+
